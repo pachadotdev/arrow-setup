@@ -22,5 +22,4 @@ apt-get -y install cmake build-essential
 apt-get -y install ninja-build
 
 # s3 dependencies
-apt-get -y install libcurl4-openssl-dev
-
+apt-get -y install libcurl4-openssl-dev libssl-dev
