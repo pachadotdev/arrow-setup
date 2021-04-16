@@ -10,6 +10,7 @@ if (!require('rlang'))  install.packages('rlang')
 if (!require('tidyselect'))  install.packages('tidyselect')
 if (!require('vctrs'))  install.packages('vctrs')
 if (!require('cpp11'))  install.packages('cpp11')
+if (!require('decor'))  install.packages('decor')
 "
 
 make clean && R CMD INSTALL . && make test
