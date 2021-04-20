@@ -84,28 +84,28 @@ else
  echo 'ARROW_WITH_SNAPPY is already set'
 fi
 
-if [[ $ARROW_WITH_PARQUET == "" ]]
+if [[ $ARROW_BUILD_TESTS == "" ]]
+then
+ echo 'adding ARROW_BUILD_TESTS to .bashrc'
+ printf '\nexport ARROW_BUILD_TESTS=OFF' | tee -a ~/.bashrc
+else
+ echo 'ARROW_BUILD_TESTS is already set'
+fi
+
+if [[ $ARROW_PARQUET == "" ]]
 then
  echo 'adding ARROW_WITH_PARQUET to .bashrc'
- printf '\nexport ARROW_WITH_PARQUET=ON' | tee -a ~/.bashrc
+ printf '\nexport ARROW_PARQUET=ON' | tee -a ~/.bashrc
 else
  echo 'ARROW_WITH_PARQUET is already set'
 fi
 
-if [[ $ARROW_WITH_PYTHON == "" ]]
+if [[ $ARROW_PYTHON == "" ]]
 then
- echo 'adding ARROW_WITH_PYTHON to .bashrc'
- printf '\nexport ARROW_WITH_PYTHON=ON' | tee -a ~/.bashrc
+ echo 'adding ARROW_PYTHON to .bashrc'
+ printf '\nexport ARROW_WITH_PYTHON=OFF' | tee -a ~/.bashrc
 else
  echo 'ARROW_WITH_PYTHON is already set'
-fi
-
-if [[ $ARROW_BUILD_TESTS == "" ]]
-then
- echo 'adding ARROW_BUILD_TESTS to .bashrc'
- printf '\nexport ARROW_BUILD_TESTS=ON' | tee -a ~/.bashrc
-else
- echo 'ARROW_BUILD_TESTS is already set'
 fi
 
 if [[ $ARROW_COMPUTE == "" ]]
@@ -175,7 +175,7 @@ fi
 if [[ $ARROW_S3 == "" ]]
 then
  echo 'adding ARROW_S3 to .bashrc'
- printf '\nexport ARROW_S3=ON' | tee -a ~/.bashrc
+ printf '\nexport ARROW_S3=OFF' | tee -a ~/.bashrc
 else
  echo 'ARROW_S3 is already set'
 fi
