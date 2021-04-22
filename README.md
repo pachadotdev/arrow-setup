@@ -32,7 +32,7 @@ cd ~/github/arrow/r && source ~/.bashrc && wget https://raw.githubusercontent.co
 
 ## Step 4 - Install the R Package
 ```
-cd ~/github/arrow/r && wget https://raw.githubusercontent.com/pachamaltese/arrow-setup/main/04-build-arrow-pkg.sh && bash 04-build-arrow-pkg.sh
+cd ~/github/arrow/r && source ~/.bashrc && wget https://raw.githubusercontent.com/pachamaltese/arrow-setup/main/04-build-arrow-pkg.sh && bash 04-build-arrow-pkg.sh
 ```
 
 ## Step 5 - Changing parameters
