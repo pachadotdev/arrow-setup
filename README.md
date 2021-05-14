@@ -5,7 +5,7 @@ WIP script to ease libarrow development setup on Linux.
 Installing Arrow R Package on Ubuntu
 
 ## About
-This is a non-root setup that just works to test the development version of both Arrow library and Arrow R package. The only root part is to install the dependencies (i.e. cmake)
+This is a non-root setup that just works to test the development version of both Arrow library and Arrow R package. The only root part is to install the dependencies in the 1st step (i.e. cmake)
 
 ## Step 0 - Clone the Arrow repository
 
@@ -15,27 +15,17 @@ cd ~/github
 git clone https://github.com/pachamaltese/arrow 
 ```
 
-## Step 1 - Install dependencies
+## Step 1 - Install dependencies (requires root/sudo access)
 ```
-cd ~/github/arrow/r && wget https://raw.githubusercontent.com/pachamaltese/arrow-setup/main/01-update-system.sh && sudo bash 01-update-system.sh
+cd ~/github/arrow/r && wget https://raw.githubusercontent.com/pachamaltese/arrow-setup/main/01-install-dependencies.sh && sudo bash 01-install-dependencies.sh
 ```
 
 ## Step 2 - Environment variables
 ```
-cd ~/github/arrow/r && wget https://raw.githubusercontent.com/pachamaltese/arrow-setup/main/02-environment-variables.sh && bash 02-environment-variables.sh
+cd ~/github/arrow/r && wget https://raw.githubusercontent.com/pachamaltese/arrow-setup/main/02-install-arrow.sh && bash 02-install-arrow.sh
 ```
 
-## Step 3 - Build the Arrow Library
-```
-cd ~/github/arrow/r && source ~/.bashrc && wget https://raw.githubusercontent.com/pachamaltese/arrow-setup/main/03-build-arrow-lib.sh && bash 03-build-arrow-lib.sh
-```
-
-## Step 4 - Install the R Package
-```
-cd ~/github/arrow/r && source ~/.bashrc && wget https://raw.githubusercontent.com/pachamaltese/arrow-setup/main/04-build-arrow-pkg.sh && bash 04-build-arrow-pkg.sh
-```
-
-## Step 5 - Changing parameters
+## Step 3 - Changing parameters (Optional)
 ```
 nano ~/.bashrc
 ```
@@ -79,5 +69,3 @@ https://embeddeddevelop.blogspot.com/2019/01/clang-tidy-cmake-on-ubuntu-1804.htm
 https://apt.llvm.org/
 https://arrow.apache.org/docs/r/#developing
 https://arrow.apache.org/docs/developers/cpp/building.html#faster-builds-with-ninja
-
-

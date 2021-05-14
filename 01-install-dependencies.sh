@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# slightly based on 
+# slightly based on
 # https://github.com/apache/arrow/issues/6270
 # https://issues.apache.org/jira/browse/ARROW-10495
 # https://github.com/apache/arrow/issues/1514
@@ -8,6 +8,9 @@
 # https://apt.llvm.org/
 # https://arrow.apache.org/docs/r/#developing
 
+GREEN='\033[0;32m'
+
+printf "\n${GREEN}--------------------\nInstall Arrow Dependencies\n--------------------\n"
 
 if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root!"

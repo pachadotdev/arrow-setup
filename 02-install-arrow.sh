@@ -1,12 +1,14 @@
 #!/bin/bash
 
-# set environment variables
-
 source ~/.bashrc
+
+GREEN='\033[0;32m'
+
+printf "\n${GREEN}--------------------\nConfigure Environment Variables\n--------------------\n"
 
 if [[ $ARROW_HOME == "" ]]
 then
- echo 'adding ARROW_HOME to .bashrc' 
+ echo 'adding ARROW_HOME to .bashrc'
  printf '\n#ARROW VARS\nexport ARROW_HOME=~/.arrow' | tee -a ~/.bashrc
 else
  echo 'ARROW_HOME is already set'
@@ -205,3 +207,54 @@ echo $CMAKE_BUILD_TYPE
 echo $ARROW_INSTALL_NAME_RPATH
 echo $ARROW_S3
 
+printf "\n${GREEN}--------------------\nBuild Arrow Library\n--------------------\n"
+
+export MAKEFLAGS="-j$(grep -c ^processor /proc/cpuinfo)"
+mkdir -p ../cpp/build && pushd ../cpp/build
+
+# configure the build using ninja
+# see https://arrow.apache.org/docs/developers/cpp/building.html#faster-builds-with-ninja
+# no S3 AWS SDK support
+cmake -DCMAKE_INSTALL_PREFIX=$ARROW_HOME \
+ -DCMAKE_INSTALL_LIBDIR=lib \
+ -DARROW_WITH_BZ2=$ARROW_WITH_BZ2 \
+ -DARROW_WITH_ZLIB=$ARROW_WITH_ZLIB \
+ -DARROW_WITH_ZSTD=$ARROW_WITH_ZSTD \
+ -DARROW_WITH_LZ4=$ARROW_WITH_LZ4 \
+ -DARROW_WITH_SNAPPY=$ARROW_WITH_SNAPPY \
+ -DARROW_WITH_BROTLI=$ARROW_WITH_BROTLI \
+ -DARROW_PARQUET=$ARROW_PARQUET \
+ -DARROW_PYTHON=$ARROW_PYTHON \
+ -DARROW_BUILD_TESTS=$ARROW_BUILD_TESTS \
+ -DARROW_COMPUTE=$ARROW_COMPUTE \
+ -DARROW_CSV=$ARROW_CSV \
+ -DARROW_DATASET=$ARROW_DATASET \
+ -DARROW_FILESYSTEM=$ARROW_FILESYSTEM \
+ -DARROW_JEMALLOC=$ARROW_JEMALLOC \
+ -DARROW_JSON=$ARROW_JSON \
+ -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE \
+ -DARROW_INSTALL_NAME_RPATH=$ARROW_INSTALL_NAME_RPATH \
+ -DARROW_S3=$ARROW_S3 \
+ -GNinja \
+ ..
+
+cmake --build . --target install
+
+pushd ../../r
+
+printf "\n${GREEN}--------------------\nBuild Arrow R Package\n--------------------\n"
+
+Rscript -e "
+options(repos = 'https://cloud.r-project.org/')
+if (!require('assertthat'))  install.packages('assertthat')
+if (!require('bit64'))       install.packages('bit64')
+if (!require('purrr'))       install.packages('purrr')
+if (!require('R6'))          install.packages('R6')
+if (!require('rlang'))       install.packages('rlang')
+if (!require('tidyselect'))  install.packages('tidyselect')
+if (!require('vctrs'))       install.packages('vctrs')
+if (!require('cpp11'))       install.packages('cpp11')
+if (!require('decor'))       install.packages('decor')
+"
+
+make clean && R CMD INSTALL . && make test
