@@ -62,10 +62,10 @@ Attaching package: ‘arrow’The following object is masked from ‘package:uti
 
 ## References
 
-https://github.com/apache/arrow/issues/6270
-https://issues.apache.org/jira/browse/ARROW-10495
-https://github.com/apache/arrow/issues/1514
-https://embeddeddevelop.blogspot.com/2019/01/clang-tidy-cmake-on-ubuntu-1804.html
-https://apt.llvm.org/
-https://arrow.apache.org/docs/r/#developing
-https://arrow.apache.org/docs/developers/cpp/building.html#faster-builds-with-ninja
+* https://github.com/apache/arrow/issues/6270
+* https://issues.apache.org/jira/browse/ARROW-10495
+* https://github.com/apache/arrow/issues/1514
+* https://embeddeddevelop.blogspot.com/2019/01/clang-tidy-cmake-on-ubuntu-1804.html
+* https://apt.llvm.org/
+* https://arrow.apache.org/docs/r/#developing
+* https://arrow.apache.org/docs/developers/cpp/building.html#faster-builds-with-ninja
