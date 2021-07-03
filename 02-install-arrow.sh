@@ -285,6 +285,7 @@ if (!require('tidyselect'))  install.packages('tidyselect')
 if (!require('vctrs'))       install.packages('vctrs')
 if (!require('cpp11'))       install.packages('cpp11')
 if (!require('decor'))       install.packages('decor')
+if (!require('testthat'))       install.packages('testthat')
 "
 
 make clean && R CMD INSTALL . && make test
