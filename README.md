@@ -50,7 +50,7 @@ export LD_LIBRARY_PATH=${ARROW_HOME}/lib:${LD_LIBRARY_PATH}
 export ARROW_R_DEV=true
 ```
 
-And paste those in `~/.profile`, which will enable those variables for desktop apps, then reboot and RStudio will show this output:
+And paste those in `~/.profile`, which will enable those variables for desktop apps, then *reboot* and RStudio will show this output:
 
 ```
 > Sys.getenv("LD_LIBRARY_PATH")
