@@ -196,7 +196,7 @@ fi
 if [[ $ARROW_INSTALL_NAME_RPATH == "" ]]
 then
  echo 'adding ARROW_INSTALL_NAME_RPATH to .bashrc'
- printf '\nexport ARROW_INSTALL_NAME_RPATH=OFF' | tee -a ~/.bashrc
+ printf '\nexport ARROW_INSTALL_NAME_RPATH=ON' | tee -a ~/.bashrc
  echo '\n'
 else
  echo 'ARROW_INSTALL_NAME_RPATH is already set'
@@ -205,7 +205,7 @@ fi
 if [[ $ARROW_S3 == "" ]]
 then
  echo 'adding ARROW_S3 to .bashrc'
- printf '\nexport ARROW_S3=OFF' | tee -a ~/.bashrc
+ printf '\nexport ARROW_S3=ON' | tee -a ~/.bashrc
  echo '\n'
 else
  echo 'ARROW_S3 is already set'
