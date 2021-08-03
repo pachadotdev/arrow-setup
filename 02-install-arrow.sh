@@ -288,6 +288,7 @@ if (!require('decor'))       install.packages('decor')
 if (!require('testthat'))    install.packages('testthat')
 if (!require('lubridate'))   install.packages('lubridate')
 if (!require('dplyr'))   install.packages('dplyr')
+if (!require('hms'))   install.packages('hms')
 "
 
 make clean && R CMD INSTALL . && make test
